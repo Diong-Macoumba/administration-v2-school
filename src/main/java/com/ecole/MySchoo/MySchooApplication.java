@@ -42,7 +42,7 @@ public class MySchooApplication {
 			userService.addRoleToUser("Dom159", "ADMIN");
 
 
-			Classroom l1 = classroomRepository.save(new Classroom(null,"L1"));
+			/*Classroom l1 = classroomRepository.save(new Classroom(null,"L1"));
 			Classroom l2 = classroomRepository.save(new Classroom(null,"L2"));
 			Classroom l3 = classroomRepository.save(new Classroom(null,"L3"));
 			Classroom m1 = classroomRepository.save(new Classroom(null,"L4"));
@@ -80,7 +80,7 @@ public class MySchooApplication {
 			roomRepository.save(new Room(null, 2));
 			roomRepository.save(new Room(null, 3));
 			roomRepository.save(new Room(null, 4));
-			roomRepository.save(new Room(null, 5));
+			roomRepository.save(new Room(null, 5));*/
 
 
 		};
