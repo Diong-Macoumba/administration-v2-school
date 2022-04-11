@@ -1,8 +1,9 @@
 package com.ecole.MySchoo.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@Data
+@Data @AllArgsConstructor
 public class CourseResponseDto {
 
     private String title;
