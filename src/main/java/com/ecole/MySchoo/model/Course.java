@@ -2,6 +2,7 @@ package com.ecole.MySchoo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor @NoArgsConstructor @Data
+@AllArgsConstructor @NoArgsConstructor @Data @Builder
 @Table(name = "courses")
 public class Course {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

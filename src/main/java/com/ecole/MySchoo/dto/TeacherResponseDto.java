@@ -1,9 +1,8 @@
 package com.ecole.MySchoo.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@Data @AllArgsConstructor
+@Data
 public class TeacherResponseDto {
     private String firstName;
     private String lastName;
