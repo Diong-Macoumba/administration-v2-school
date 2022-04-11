@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.cors().configurationSource( request -> {
+        /*http.cors().configurationSource( request -> {
         CorsConfiguration cors = new CorsConfiguration();
         cors.addAllowedOrigin("http://localhost:4200");
         cors.addAllowedMethod("*");
@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         cors.setMaxAge(3600L);
         cors.setAllowCredentials(true);
         return  cors;
-        });
+        });*/
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers( "/login","/api/token/refresh/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/**").hasAnyAuthority("ADMIN");
