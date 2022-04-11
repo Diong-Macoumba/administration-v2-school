@@ -35,6 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.headers().addHeaderWriter( new StaticHeadersWriter("Access-Control-Allow-Origin", "*"));
+        http.headers().addHeaderWriter( new StaticHeadersWriter("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS"));
+        http.headers().addHeaderWriter( new StaticHeadersWriter("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With"));
        /* http.cors().configurationSource( request -> {
         CorsConfiguration cors = new CorsConfiguration();
         cors.addAllowedOrigin("*");
