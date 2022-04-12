@@ -34,30 +34,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.headers().addHeaderWriter( new StaticHeadersWriter("Access-Control-Allow-Origin", "*"));
-        http.headers().addHeaderWriter( new StaticHeadersWriter("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS"));
-        http.headers().addHeaderWriter( new StaticHeadersWriter("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With"));
-       /* http.cors().configurationSource( request -> {
+       http.cors().configurationSource( request -> {
         CorsConfiguration cors = new CorsConfiguration();
         cors.addAllowedOrigin("*");
         cors.addAllowedMethod("*");
         cors.addAllowedHeader("*");
         cors.addExposedHeader("*");
         cors.setMaxAge(3600L);
-        cors.setAllowCredentials(true);
         return  cors;
-        });*/
+        });
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers( "/login","/api/token/refresh/**").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/users/**").hasAnyAuthority("ADMIN");
-        http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/users/**").hasAnyAuthority("SUPER_ADMIN");
-        //http.authorizeRequests().antMatchers(HttpMethod.POST, "/Teachers/**").hasAnyAuthority("ADMIN");
-        //http.authorizeRequests().antMatchers(HttpMethod.PUT, "/Teachers/**").hasAnyAuthority("ADMIN");
-        //http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/Teachers/**").hasAnyAuthority("ADMIN");
-        //http.authorizeRequests().antMatchers(HttpMethod.POST, "/Students/**").hasAnyAuthority("ADMIN");
-        //http.authorizeRequests().antMatchers(HttpMethod.PUT, "/Students/**").hasAnyAuthority("ADMIN");
-        //http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/Students/**").hasAnyAuthority("ADMIN");
-        http.authorizeRequests().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers( "/login", "/api/token/refresh/**").permitAll();
+        http.authorizeRequests().antMatchers("/Students/**").hasAnyAuthority("ADMIN");
         http.addFilter(new AuthenticationFilter(authenticationManagerBean()));
         http.addFilterBefore( new AuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
 
